@@ -5,7 +5,7 @@ import Termsbanner from '../Banner/Termsbanner'
 import { API_URL } from '../..';
 
 const Termsandcond = () => {
-    const API = 'http://localhost:8000'
+
     const [data, setData] = useState([])
     
     useEffect(() => {
@@ -17,7 +17,7 @@ const Termsandcond = () => {
           const requestOptions = {
             method: 'GET',
           }
-          await fetch(`${API}/api/socialMediaLinkName?name=${name}`, requestOptions)
+          await fetch(`${API_URL}/api/socialMediaLinkName?name=${name}`, requestOptions)
             .then(response => response.json())
             .then((data) => {
               if (data.status === 200) {

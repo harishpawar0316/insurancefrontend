@@ -6,7 +6,6 @@ import { API_URL } from '../..';
 
 const Disclaimer = () => {
     
-    const API = 'http://localhost:8000'
     const [data, setData] = useState([])
     
     useEffect(() => {
@@ -18,7 +17,7 @@ const Disclaimer = () => {
         const requestOptions = {
             method: 'GET',
         }
-        await fetch(`${API}/api/socialMediaLinkName?name=${name}`, requestOptions)
+        await fetch(`${API_URL}/api/socialMediaLinkName?name=${name}`, requestOptions)
             .then(response => response.json())
             .then((data) => {
             if (data.status === 200) {
