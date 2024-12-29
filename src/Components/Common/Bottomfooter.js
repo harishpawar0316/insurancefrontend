@@ -19,9 +19,6 @@ const Bottomfooter = () => {
         <li className="last" style={{ borderRight: "0px" }}>
           <Link to="/Contactus">Contact Us</Link>
         </li>
-        <li className="last" style={{ borderRight: "0px" }}>
-          <a href="#">Login</a>
-        </li>
       </ul>
       <div className="container">
         <div className="row">
