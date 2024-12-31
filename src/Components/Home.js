@@ -22,49 +22,29 @@ const Home = () => {
     if (token) {
       dispatch(AddMotoformData({ name: "businessentity", value: token, }));
     } else {
-      //console.log("no data")
     }
   }, [dispatch, token])
-
-  // const getIDFromURL = () => {
-  //   const searchParams = new URLSearchParams(useLocation().search);
-  //   return searchParams.get("id");
-  // };
-  
-  // const idFromURL = getIDFromURL();
-  // if (idFromURL) {
-  //   // localStorage.setItem("idFromURL", idFromURL);
-  //   //console.log("idFromURL", idFromURL)
-  // }
 
   useEffect(() => {
     getMainpageCmsdata()
   }, [])
 
   const getMainpageCmsdata = async() => {
-    try{
-        const requestOptions = {
-            method: 'GET',
-        }
+    try {
+      const requestOptions = {
+        method: 'GET',
+      }
       await fetch(`${API_URL}/api/get_mainpage`, requestOptions)
         .then(response => response.json())
         .then((data) => {
-          //console.log("data", data)
-          if(data.status === 200){
-            console.log("data", data.data)
+          if(data.status === 200) {
             setData(data.data)
           } 
         })
-
     } catch (error) {
       console.log("error", error)
     }
   }
-
-  
-  
-
-
 
   return (
     <div>

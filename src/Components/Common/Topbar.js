@@ -1,9 +1,34 @@
-import React from 'react'
+import React, { useState,useEffect } from 'react'
 import Email from '../../Image/Email.svg'
 import Phone from '../../Image/Phone.svg'
 import Whatsapp from '../../Image/Whatsapp.svg'
 import Flag from '../../Image/Flag.svg'
+import { API_URL } from '../..';
 const Topbar = () => {
+    const [data, setData] = useState([])
+        
+    useEffect(() => {
+        getMainpageCmsdata()
+    }, [])
+
+    const getMainpageCmsdata = async () => {
+        try {
+            const requestOptions = {
+            method: 'GET',
+            }
+            await fetch(`${API_URL}/api/get_mainpage`, requestOptions)
+            .then(response => response.json())
+            .then((data) => {
+                if (data.status === 200) {
+                    setData(data.data)
+                }
+            })
+    
+        } catch (error) {
+            console.log("error", error)
+        }
+    }
+
     return (
         <div>
             <div className="top_menu">
@@ -25,24 +50,23 @@ const Topbar = () => {
                                                                 <img src={Email} alt="phone" />
                                                             </span>
                                                             <span className="info-header-text">Email: </span>
-                                                            <a href="mailto:"> info@lastminutepolicy.com</a>
+                                                            <a href="mailto:">{data.email}</a>
                                                         </li>
                                                         <li>
                                                             <span className="info-header-icons">
                                                                 <img src={Phone} alt="phone" />
                                                             </span>
                                                             <span className="info-header-text">Call us: </span>
-                                                            <a href="/">800 567 467</a>
+                                                            <a href={`tel:${data.call_us}`}>{data.call_us}</a>
                                                         </li>
                                                         <li className="Whatsapp">
                                                             <span className="info-header-icons">
                                                                 <img src={Whatsapp}  alt="phone" />
                                                             </span>
                                                             <span className="info-header-text">Whatsapp: </span>
-                                                            <a href="https://wa.me/971569973109">+971569973109</a> ,
-                                                            <a href="https://wa.me/971569973110">+971569973110</a>
+                                                            <a href={`https://wa.me/${data.whastapp}`}>{data.whastapp}</a>
                                                         </li>
-                                                        <li>
+                                                        {/* <li>
                                                             <a href="/">
                                                                 <img style={{width:'30px'}}
                                                                     alt="UAE Flag"
@@ -51,7 +75,7 @@ const Topbar = () => {
                                                                     src={Flag}
                                                                 />
                                                             </a>
-                                                        </li>
+                                                        </li> */}
                                                     </ul>
                                                 </div>
                                             </section>

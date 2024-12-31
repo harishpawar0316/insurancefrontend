@@ -2,11 +2,11 @@ import React, { useEffect, useState } from 'react'
 import Knowmoreimg from '../../Image/personalized_insurance.png'
 import videoicon from '../../Image/videoIcon.svg'
 import { API_URL } from '../..'
+import { Link } from "react-router-dom";
 
 const Knowmore = () => {
 
   const [data, setData] = useState([])
-
 
   useEffect(() => {
     getMainpageCmsdata()
@@ -20,7 +20,6 @@ const Knowmore = () => {
       await fetch(`${API_URL}/api/get_mainpage`, requestOptions)
         .then(response => response.json())
         .then((data) => {
-          //console.log("data", data)
           if (data.status === 200) {
             console.log("data", data.data)
             setData(data.data)
@@ -32,9 +31,6 @@ const Knowmore = () => {
     }
   }
 
-
-
-
   return (
     <div>
       <div className='container knowmore' data-aos="zoom-in-up" data-aos-duration="2000">
@@ -43,13 +39,10 @@ const Knowmore = () => {
             <img src={Knowmoreimg} className='knowmoreimg' alt='knowmore' />
           </div>
           <div className='col-md-8'>
-            {/* <h3>Get <span>personalized</span> health <br />insurance advice at your <span>home</span></h3>
-             */}
             {data && (
               <h3 dangerouslySetInnerHTML={{ __html: data.know_more_header }} />
             )}
-            <button className='knowmore_button'>Know more</button>
-            {/* <a style={{textDecoration:'none'}} href='https://www.youtube.com/watch?v=qjXgpJpSlCc&t=1s' target='_blank'> */}
+            <Link to="/Knowmorecontent"><button className='knowmore_button'>Know more</button></Link>
             {data?.know_more_banner && data.know_more_banner.map((val, index) => (
               <a
                 key={index}

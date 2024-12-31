@@ -171,6 +171,7 @@ import GroupPolicyClaims from "./Components/Groupinsurance/GroupPolicyClaims";
 import GroupPolicyRenewal from "./Components/Groupinsurance/GroupPolicyRenewal";
 import VerifyOtp from "./Components/Login/VerifyOtp";
 import MotorInsurancedetails from "./Components/Common/MotorInsurancedetails";
+import Knowmorecontent from "./Components/Knowmore/Knowmorecontent";
 function App() {
   // const { usertoken } = UseUserContext()
   const usertoken = localStorage.getItem("usertoken"); // Get the user token
@@ -377,6 +378,7 @@ function App() {
               <Route path="/Travelplantype" element={<Travelplantype />} />
               <Route path="/TravelPayments" element={<TravelPayments />} />
               <Route path="/ThankYou" element={<ThankYou />} />
+              <Route path="/Knowmorecontent" element={<Knowmorecontent />} />
               {/* Dashboard */}
 
               {/* <Route
